@@ -13,6 +13,5 @@ export const useUsers = (): Users[] => {
         })()
     }, [])
 
-    output.sort((a, b) => b.rate - a.rate)
     return output
 }

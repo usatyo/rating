@@ -13,6 +13,7 @@ export const getUserInfo = async (): Promise<Users[]> => {
         const user = doc.data() as Users
         ret.push({ ...user })
     })
+    ret.sort((a, b) => b.rate - a.rate)
     return ret
 }
 

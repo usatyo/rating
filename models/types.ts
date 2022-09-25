@@ -1,3 +1,5 @@
+import { Timestamp } from "firebase/firestore"
+
 export type Users = {
     name: string,
     rate: number,
@@ -13,6 +15,7 @@ export type Datas = {
     white: string,
     handicap: number,
     result: number,
+    date: Timestamp,
 }
 
 export const DEFAULT_DATA: Datas = {
@@ -20,4 +23,5 @@ export const DEFAULT_DATA: Datas = {
     white: "",
     handicap: 0,
     result: 0,
+    date: Timestamp.now()
 }

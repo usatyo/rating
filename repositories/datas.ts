@@ -1,4 +1,4 @@
-import { addDoc, getFirestore } from "firebase/firestore"
+import { addDoc, getFirestore, Timestamp } from "firebase/firestore"
 import { app } from "../libs/firebase"
 import { collection, getDocs } from "firebase/firestore"
 import { Datas } from "../models/types"
@@ -19,7 +19,13 @@ export const getDataInfo = async (): Promise<Datas[]> => {
 export const setDataInfo = async (data: Datas): Promise<void> => {
     const colRef = collection(db, "datas")
     await addDoc(colRef,
-        { black: data.black, white: data.white, handicap: data.handicap, result: data.result }
+        {
+            black: data.black,
+            white: data.white,
+            handicap: data.handicap,
+            result: data.result,
+            date: Timestamp.now(),
+        }
     )
     return
 }
