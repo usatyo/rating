@@ -1,4 +1,5 @@
 import { NextPage } from "next";
+import ReturnButton from "../../components/returnButton";
 import usePostUsers from "../../hooks/usePostUsers";
 
 const PostUser: NextPage = () => {
@@ -29,6 +30,7 @@ const PostUser: NextPage = () => {
                 </div>
                 <button type="button" onClick={handleClick}>submit</button>
             </form>
+            <ReturnButton />
         </div>
     )
 }

@@ -26,12 +26,13 @@ const usePostUsers = (): [Users, LocalUsers] => {
     const handleClick = async () => {
         const currentUser = await getUserInfo()
         if (currentUser.some(info => info.name === postUser.name)) {
-            // error handling
             console.info("exist same name")
+            alert("same name error")
             return
         }
         if (typeof (postUser.rate) !== "number") {
-            // error handling
+            console.info("not number")
+            alert("not number error")
             return
         }
         setUserInfo(postUser)

@@ -1,4 +1,5 @@
 import { NextPage } from "next";
+import ReturnButton from "../../components/returnButton";
 import { HANDICAP, RESULT } from "../../constants/constants";
 import usePostDatas from "../../hooks/usePostDatas";
 
@@ -51,6 +52,7 @@ const PostResult: NextPage = () => {
                 </div>
                 <button type="button" onClick={handleClick}>submit</button>
             </form>
+            <ReturnButton />
         </div>
     )
 }
