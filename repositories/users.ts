@@ -1,15 +1,19 @@
-import { getFirestore } from "firebase/firestore";
-import { app } from "../libs/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore"
+import { app } from "../libs/firebase"
+import { collection, getDocs } from "firebase/firestore"
+import { Users } from "../models/types"
 
 // Initialize Cloud Firestore and get a reference to the service
-const db = getFirestore(app);
+const db = getFirestore(app)
 
 // export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
-export default async function getData() {
-    const querySnapshot = await getDocs(collection(db, "users"));
+export const getNames = async (): Promise<Users[]> => {
+    const querySnapshot = await getDocs(collection(db, "users"))
+    let ret = new Array<Users>()
     querySnapshot.forEach((doc) => {
-      console.log(`${doc.id} => ${doc.data().rate}`);
-    });
+        const user = doc.data() as Users
+        ret.push({ ...user, id:doc.id })
+    })
+    return ret
 }
 

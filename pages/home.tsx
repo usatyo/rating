@@ -1,7 +1,9 @@
-import getData from "../repositories/users"
+import { useNames } from "../services/useNames"
+
 
 export default function FirstPost() {
-    getData()
+    const names = useNames()
+
     return (
         <div>
             <h3>rating system</h3>
@@ -15,6 +17,11 @@ export default function FirstPost() {
                     <input type="text"></input>
                 </div>
                 <div>
+                    {names.map((val) => (
+                        <div>
+                            <label>{val.name}{"  "}{val.rate}</label>
+                        </div>
+                    ))}
                     <input type="radio"></input>
                     <label>black</label>
                     <input type="radio"></input>
