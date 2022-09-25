@@ -1,34 +1,29 @@
-import { useNames } from "../services/useNames"
+import { NextPage } from "next"
+import Link from "next/link"
+import { useDatas } from "../services/useDatas"
+import { useUsers } from "../services/useUsers"
 
 
-export default function FirstPost() {
-    const names = useNames()
+const Home:NextPage = () => {
+    // const names = useDatas()
+    // console.log(names)
 
     return (
         <div>
-            <h3>rating system</h3>
-            <form>
-                <div>
-                    <label>black</label>
-                    <input type="text"></input>
-                </div>
-                <div>
-                    <label>white</label>
-                    <input type="text"></input>
-                </div>
-                <div>
-                    {names.map((val) => (
-                        <div>
-                            <label>{val.name}{"  "}{val.rate}</label>
-                        </div>
-                    ))}
-                    <input type="radio"></input>
-                    <label>black</label>
-                    <input type="radio"></input>
-                    <label>white</label>
-                </div>
-                <input type="submit"></input>
-            </form>
+            <Link href="/ranking">
+                <h1>go home</h1>
+            </Link>
+            <Link href="/history">
+                <h1>go home</h1>
+            </Link>
+            <Link href="/post/result">
+                <h1>go home</h1>
+            </Link>
+            <Link href="/post/user">
+                <h1>go home</h1>
+            </Link>
         </div>
     )
 }
+
+export default Home
