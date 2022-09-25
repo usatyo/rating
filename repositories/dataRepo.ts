@@ -19,14 +19,7 @@ export const getDataInfo = async (): Promise<Datas[]> => {
 
 export const setDataInfo = async (data: Datas): Promise<void> => {
     const colRef = collection(db, "datas")
-    await addDoc(colRef,
-        {
-            black: data.black,
-            white: data.white,
-            handicap: data.handicap,
-            result: data.result,
-            date: Timestamp.now(),
-        }
-    )
+    data.date = Timestamp.now()
+    await addDoc(colRef, { ...data })
     return
 }

@@ -1,14 +1,13 @@
 import { NextPage } from "next";
 import { useEffect } from "react";
-import usePostDatas from "../hooks/usePostDatas";
-import { setUserInfo } from "../repositories/userRepo";
+import { calc_rate } from "../utils/util";
 
 const Test: NextPage = () => {
-    const [data, { change: handleChange, click: handleClick }] = usePostDatas()
-    const ud: undefined = undefined
-    
     useEffect(() => {
-        handleChange(ud, ud, 1, 0)
+        console.log(calc_rate("a", "b", 0, 1))
+        console.log(calc_rate("b", "a", 0, -1))
+        console.log(calc_rate("b", "c", 0, 1))
+        console.log(calc_rate("c", "b", 0, 1))
     })
     return <div></div>
 }

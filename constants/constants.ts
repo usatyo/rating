@@ -16,3 +16,6 @@ export const RESULT: string[] = [
     "持碁",
     "白の勝ち",
 ]
+
+// レートの変動のしやすさ
+export const K:number = 24

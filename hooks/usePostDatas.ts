@@ -2,6 +2,8 @@ import { useRouter } from "next/router"
 import { useState } from "react"
 import { Datas, DEFAULT_DATA } from "../models/types"
 import { getDataInfo, setDataInfo } from "../repositories/dataRepo"
+import { getUserInfo, updateUserRate } from "../repositories/userRepo"
+import { calc_rate } from "../utils/util"
 
 interface LocalDatas {
     change: (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => void,
@@ -28,9 +30,9 @@ const usePostDatas = (): [Datas, LocalDatas] => {
     }
 
     const handleClick = async () => {
-        const currentUser = await getDataInfo()
-        if (!currentUser.some(info => info.black === postDate.black)
-            || !currentUser.some(info => info.white === postDate.white)) {
+        const currentUser = await getUserInfo()
+        if (!currentUser.some(info => info.name === postDate.black)
+            || !currentUser.some(info => info.name === postDate.white)) {
             // error handling
             console.info("non-exist name")
             alert("non-exist name error")
@@ -57,6 +59,14 @@ const usePostDatas = (): [Datas, LocalDatas] => {
             return
         }
         setDataInfo(postDate)
+        const [new_b, new_w]: number[] = await calc_rate(
+            postDate.black,
+            postDate.white,
+            postDate.handicap,
+            postDate.result,
+        )
+        updateUserRate({ name: postDate.black, rate: new_b })
+        updateUserRate({ name: postDate.white, rate: new_w })
         router.replace("/home")
         return
     }
