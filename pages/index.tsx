@@ -1,15 +1,15 @@
-import { NextPage } from "next";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { NextPage } from 'next'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 
 const Root: NextPage = () => {
-    const router = useRouter()
+  const router = useRouter()
 
-    useEffect(() => {
-        router.replace("/home")
-    }, [])
+  useEffect(() => {
+    router.replace('/home')
+  }, [router])
 
-    return null
+  return null
 }
 
 export default Root
