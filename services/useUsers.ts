@@ -12,5 +12,7 @@ export const useUsers = (): Users[] => {
             setOutput(infos)
         })()
     }, [])
+
+    output.sort((a, b) => b.rate - a.rate)
     return output
 }

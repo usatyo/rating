@@ -1,26 +1,21 @@
 import { NextPage } from "next"
 import Link from "next/link"
-import { useDatas } from "../services/useDatas"
-import { useUsers } from "../services/useUsers"
 
 
-const Home:NextPage = () => {
-    // const names = useDatas()
-    // console.log(names)
-
+const Home: NextPage = () => {
     return (
         <div>
             <Link href="/ranking">
-                <h1>go home</h1>
+                <h1>ranking</h1>
             </Link>
             <Link href="/history">
-                <h1>go home</h1>
+                <h1>history</h1>
             </Link>
             <Link href="/post/result">
-                <h1>go home</h1>
+                <h1>post result</h1>
             </Link>
             <Link href="/post/user">
-                <h1>go home</h1>
+                <h1>register user</h1>
             </Link>
         </div>
     )
