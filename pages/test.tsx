@@ -1,12 +1,14 @@
 import { NextPage } from "next";
 import { useEffect } from "react";
-import { setUserInfo } from "../repositories/users";
+import usePostDatas from "../hooks/usePostDatas";
+import { setUserInfo } from "../repositories/userRepo";
 
 const Test: NextPage = () => {
+    const [data, { change: handleChange, click: handleClick }] = usePostDatas()
+    const ud: undefined = undefined
+    
     useEffect(() => {
-        // void (async () => {
-            // await setUserInfo({name: "akiko", rate:1600})
-        // })()
+        handleChange(ud, ud, 1, 0)
     })
     return <div></div>
 }

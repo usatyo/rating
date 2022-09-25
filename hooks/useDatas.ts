@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 import { Datas, DEFAULT_DATA } from "../models/types"
-import { getDataInfo } from "../repositories/datas"
+import { getDataInfo } from "../repositories/dataRepo"
 
 
 export const useDatas = (): Datas[] => {
-    const [output, setOutput] = useState([DEFAULT_DATA])
+    const [output, setOutput] = useState<Datas[]>([DEFAULT_DATA])
 
     useEffect(() => {
         void (async () => {

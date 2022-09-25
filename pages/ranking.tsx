@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import { Users } from "../models/types";
-import { useUsers } from "../services/useUsers";
+import { useUsers } from "../hooks/useUsers";
 
 const Ranking: NextPage = () => {
     const infos: Users[] = useUsers()

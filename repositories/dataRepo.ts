@@ -10,9 +10,10 @@ export const getDataInfo = async (): Promise<Datas[]> => {
     const querySnapshot = await getDocs(collection(db, "datas"))
     let ret = new Array<Datas>()
     querySnapshot.forEach((doc) => {
-        const user = doc.data() as Datas
+        const user: Datas = doc.data() as Datas
         ret.push({ ...user })
     })
+    ret.sort((a, b) => b.date.seconds - a.date.seconds)
     return ret
 }
 

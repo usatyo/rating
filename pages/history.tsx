@@ -1,6 +1,7 @@
 import { NextPage } from "next";
 import { Datas } from "../models/types";
-import { useDatas } from "../services/useDatas";
+import { useDatas } from "../hooks/useDatas";
+import { HANDICAP, RESULT } from "../constants/constants";
 
 
 const History: NextPage = () => {
@@ -22,9 +23,13 @@ const History: NextPage = () => {
                     <tr>
                         <td>{info.black}</td>
                         <td>{info.white}</td>
-                        <td>{info.handicap}</td>
-                        <td>{info.result}</td>
-                        <td>{(info.date).toDate().toDateString()}</td>
+                        <td>{HANDICAP[info.handicap]}</td>
+                        <td>{RESULT[info.result + 1]}</td>
+                        <td>{
+                            String((info.date).toDate().getFullYear()) + "-" +
+                            String((info.date).toDate().getMonth()) + "-" +
+                            String((info.date).toDate().getDate())
+                        }</td>
                     </tr>
                 ))}
             </tbody>

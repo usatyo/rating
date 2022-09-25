@@ -10,7 +10,7 @@ export const getUserInfo = async (): Promise<Users[]> => {
     const querySnapshot = await getDocs(collection(db, "users"))
     let ret = new Array<Users>()
     querySnapshot.forEach((doc) => {
-        const user = doc.data() as Users
+        const user:Users = doc.data() as Users
         ret.push({ ...user })
     })
     ret.sort((a, b) => b.rate - a.rate)

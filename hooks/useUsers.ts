@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 import { DEFAULT_USER, Users } from "../models/types"
-import { getUserInfo } from "../repositories/users"
+import { getUserInfo } from "../repositories/userRepo"
 
 
 export const useUsers = (): Users[] => {
-    const [output, setOutput] = useState([DEFAULT_USER])
+    const [output, setOutput] = useState<Users[]>([DEFAULT_USER])
 
     useEffect(() => {
         void (async () => {
