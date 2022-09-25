@@ -1,7 +1,7 @@
 import { useRouter } from "next/router"
 import { useState } from "react"
 import { Datas, DEFAULT_DATA } from "../models/types"
-import { setDataInfo } from "../repositories/dataRepo"
+import { getDataInfo, setDataInfo } from "../repositories/dataRepo"
 
 interface LocalDatas {
     change: (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => void,
@@ -27,10 +27,35 @@ const usePostDatas = (): [Datas, LocalDatas] => {
         return
     }
 
-    const handleClick = () => {
-
-        // check name and number
-
+    const handleClick = async () => {
+        const currentUser = await getDataInfo()
+        if (!currentUser.some(info => info.black === postDate.black)
+            || !currentUser.some(info => info.white === postDate.white)) {
+            // error handling
+            console.info("non-exist name")
+            alert("non-exist name error")
+            return
+        }
+        if (postDate.black === postDate.white) {
+            console.info("same player")
+            alert("same player error")
+            return
+        }
+        if (!Number.isInteger(postDate.handicap) || !Number.isInteger(postDate.result)) {
+            console.info("not integer")
+            alert("not integer error")
+            return
+        }
+        if (postDate.handicap < 0 || 9 < postDate.handicap) {
+            console.info("invalid handicap")
+            alert("invalid handicap error")
+            return
+        }
+        if (postDate.result < -1 || 1 < postDate.result) {
+            console.info("invalid result")
+            alert("invalid result error")
+            return
+        }
         setDataInfo(postDate)
         router.replace("/home")
         return

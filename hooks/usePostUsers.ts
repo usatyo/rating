@@ -1,7 +1,7 @@
 import { useRouter } from "next/router"
 import { useState } from "react"
 import { DEFAULT_USER, Users } from "../models/types"
-import { setUserInfo } from "../repositories/userRepo"
+import { getUserInfo, setUserInfo } from "../repositories/userRepo"
 
 interface LocalUsers {
     change: (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => void,
@@ -23,10 +23,17 @@ const usePostUsers = (): [Users, LocalUsers] => {
         return
     }
 
-    const handleClick = () => {
-
-        // check name and number
-
+    const handleClick = async () => {
+        const currentUser = await getUserInfo()
+        if (currentUser.some(info => info.name === postUser.name)) {
+            // error handling
+            console.info("exist same name")
+            return
+        }
+        if (typeof (postUser.rate) !== "number") {
+            // error handling
+            return
+        }
         setUserInfo(postUser)
         router.replace("/home")
         return
