@@ -1,5 +1,5 @@
 import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined'
-import { Stack } from '@mui/material'
+import { Alert, Snackbar, Stack } from '@mui/material'
 import { NextPage } from 'next'
 import InputField from '../../components/inputField'
 import MainButton from '../../components/mainButton'
@@ -10,7 +10,7 @@ import TitleText from '../../components/titleText'
 import usePostDatas from '../../hooks/usePostDatas'
 
 const PostResult: NextPage = () => {
-  const [data, { change: handleChange, click: handleClick }] = usePostDatas()
+  const [data, open, errMes, setOpen, handleChange, handleClick] = usePostDatas()
 
   return (
     <Stack alignItems='center' spacing='40px'>
@@ -23,6 +23,9 @@ const PostResult: NextPage = () => {
       <RadioField value={data.result} handle={handleChange} />
       <MainButton text='送信' handle={handleClick} />
       <ReturnButton />
+      <Snackbar open={open} autoHideDuration={4000} onClose={() => setOpen(false)}>
+        <Alert severity='error' sx={{ backgroundColor: "#FFCCCC" }}>{errMes}</Alert>
+      </Snackbar>
     </Stack>
   )
 }

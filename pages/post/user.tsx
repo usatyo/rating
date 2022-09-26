@@ -1,6 +1,7 @@
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined'
-import { Button, Stack, TextField } from '@mui/material'
+import { Alert, Button, Snackbar, Stack, TextField } from '@mui/material'
 import { NextPage } from 'next'
+import { useState } from 'react'
 import InputField from '../../components/inputField'
 import MainButton from '../../components/mainButton'
 import ReturnButton from '../../components/returnButton'
@@ -8,7 +9,14 @@ import TitleText from '../../components/titleText'
 import usePostUsers from '../../hooks/usePostUsers'
 
 const PostUser: NextPage = () => {
-  const [data, { change: handleChange, click: handleClick }] = usePostUsers()
+  const [
+    data,
+    open,
+    errMes,
+    setOpen,
+    handleClick,
+    handleChange,
+  ] = usePostUsers()
 
   return (
     <Stack alignItems='center' spacing='40px'>
@@ -25,6 +33,9 @@ const PostUser: NextPage = () => {
       />
       <MainButton text='登録' handle={handleClick} />
       <ReturnButton />
+      <Snackbar open={open} autoHideDuration={4000} onClose={() => setOpen(false)}>
+        <Alert severity='error' sx={{ backgroundColor: "#FFCCCC" }}>{errMes}</Alert>
+      </Snackbar>
     </Stack>
   )
 }

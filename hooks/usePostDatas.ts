@@ -6,12 +6,19 @@ import { getUserInfo, updateUserRate } from '../repositories/userRepo'
 import { calc_rate } from '../utils/util'
 
 interface LocalDatas {
-  change: (formName: string, formValue: string) => void
-  click: () => void
 }
 
-const usePostDatas = (): [Datas, LocalDatas] => {
+const usePostDatas = (): [
+  Datas,
+  boolean,
+  string,
+  (state: boolean) => void,
+  (formName: string, formValue: string) => void,
+  () => void,
+] => {
   const [postDate, setPostDate] = useState<Datas>(DEFAULT_DATA)
+  const [open, setOpen] = useState(false)
+  const [errMes, setErrMes] = useState('')
   const router = useRouter()
 
   const handleChange = (formName: string, formValue: string): void => {
@@ -35,29 +42,28 @@ const usePostDatas = (): [Datas, LocalDatas] => {
       !currentUser.some((info) => info.name === postDate.black) ||
       !currentUser.some((info) => info.name === postDate.white)
     ) {
-      // error handling
-      console.info('non-exist name')
-      alert('non-exist name error')
+      setErrMes('存在しない名前です')
+      setOpen(true)
       return
     }
     if (postDate.black === postDate.white) {
-      console.info('same player')
-      alert('same player error')
+      setErrMes('同一人物との対局はできません')
+      setOpen(true)
       return
     }
     if (!Number.isInteger(postDate.handicap) || !Number.isInteger(postDate.result)) {
-      console.info('not integer')
-      alert('not integer error')
+      setErrMes('不正な入力です')
+      setOpen(true)
       return
     }
     if (postDate.handicap < 0 || 9 < postDate.handicap) {
-      console.info('invalid handicap')
-      alert('invalid handicap error')
+      setErrMes('不正な入力です')
+      setOpen(true)
       return
     }
     if (postDate.result < -1 || 1 < postDate.result) {
-      console.info('invalid result')
-      alert('invalid result error')
+      setErrMes('不正な入力です')
+      setOpen(true)
       return
     }
     setDataInfo(postDate)
@@ -73,7 +79,7 @@ const usePostDatas = (): [Datas, LocalDatas] => {
     return
   }
 
-  return [postDate, { click: handleClick, change: handleChange }]
+  return [postDate, open, errMes, setOpen, handleChange, handleClick]
 }
 
 export default usePostDatas

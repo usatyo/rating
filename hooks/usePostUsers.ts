@@ -3,13 +3,17 @@ import { useState } from 'react'
 import { DEFAULT_USER, Users } from '../models/types'
 import { getUserInfo, setUserInfo } from '../repositories/userRepo'
 
-interface LocalUsers {
-  change: (formName: string, formValue: string) => void
-  click: () => void
-}
-
-const usePostUsers = (): [Users, LocalUsers] => {
+const usePostUsers = (): [
+  Users,
+  boolean,
+  string,
+  (state: boolean) => void,
+  () => void,
+  (formName: string, formValue: string) => void,
+] => {
   const [postUser, setPostUser] = useState<Users>(DEFAULT_USER)
+  const [open, setOpen] = useState(false)
+  const [errMes, setErrMes] = useState("")
   const router = useRouter()
 
   const handleChange = (formName: string, formValue: string): void => {
@@ -26,23 +30,23 @@ const usePostUsers = (): [Users, LocalUsers] => {
   const handleClick = async () => {
     const currentUser = await getUserInfo()
     if (postUser.name === '') {
-      console.info('empty name')
-      alert('empty name error')
+      setErrMes('名前が空です')
+      setOpen(true)
       return
     }
     if (currentUser.some((info) => info.name === postUser.name)) {
-      console.info('exist same name')
-      alert('same name error')
+      setErrMes('すでに同じ名前が存在します')
+      setOpen(true)
       return
     }
     if (typeof postUser.rate !== 'number') {
-      console.info('not number')
-      alert('not number error')
+      setErrMes('数字を入力してください')
+      setOpen(true)
       return
     }
     if (!Number.isInteger(postUser.rate)) {
-      console.info('rate not integer')
-      alert('not integer error')
+      setErrMes('整数を入力してください')
+      setOpen(true)
       return
     }
     setUserInfo(postUser)
@@ -50,7 +54,7 @@ const usePostUsers = (): [Users, LocalUsers] => {
     return
   }
 
-  return [postUser, { click: handleClick, change: handleChange }]
+  return [postUser, open, errMes, setOpen, handleClick, handleChange]
 }
 
 export default usePostUsers
