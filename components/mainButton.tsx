@@ -1,4 +1,5 @@
 import { Button, useMediaQuery } from "@mui/material";
+import { ReactElement } from "react";
 import { BORDER } from "../constants/constants";
 
 type Props = {
@@ -6,7 +7,7 @@ type Props = {
   handle?: () => void
 }
 
-const MainButton = (props: Props) => {
+const MainButton = (props: Props): ReactElement => {
   const lg: boolean = useMediaQuery(BORDER)
 
   return (

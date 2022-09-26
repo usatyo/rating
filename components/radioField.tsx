@@ -1,4 +1,5 @@
 import { Box, FormControlLabel, InputLabel, Radio, RadioGroup, Stack, useMediaQuery } from "@mui/material"
+import { ReactElement } from "react"
 import { BORDER, RESULT } from "../constants/constants"
 
 type Props = {
@@ -9,11 +10,11 @@ type Props = {
   ) => void
 }
 
-const RadioField = (props: Props) => {
+const RadioField = (props: Props): ReactElement => {
   const lg: boolean = useMediaQuery(BORDER)
 
   return (
-    <Stack sx={{ width: "100%" }}>
+    <Stack sx={{ width: lg ? "400px" : "100%" }}>
       <InputLabel>結果</InputLabel>
       <RadioGroup
         onChange={(e) => props.handle("result", String(e.target.value))}

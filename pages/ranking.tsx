@@ -4,6 +4,8 @@ import MyTable from '../components/myTable'
 import ReturnButton from '../components/returnButton'
 import { useUsers } from '../hooks/useUsers'
 import { Users } from '../models/types'
+import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined';
+import TitleText from '../components/titleText'
 
 const Ranking: NextPage = () => {
   const infos: Users[] = useUsers()
@@ -22,6 +24,9 @@ const Ranking: NextPage = () => {
 
   return (
     <Stack alignItems="center" spacing="40px">
+      <TitleText text='ランキング'>
+        <EmojiEventsOutlinedIcon sx={{ width: "40px", height: "40px" }} />
+      </TitleText>
       <MyTable header={HEAD} body={genBody()} />
       <ReturnButton />
     </Stack>

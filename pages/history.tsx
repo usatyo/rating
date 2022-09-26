@@ -5,6 +5,8 @@ import ReturnButton from '../components/returnButton'
 import { HANDICAP, RESULT } from '../constants/constants'
 import { useDatas } from '../hooks/useDatas'
 import { Datas } from '../models/types'
+import HistoryOutlinedIcon from '@mui/icons-material/HistoryOutlined';
+import TitleText from '../components/titleText'
 
 const History: NextPage = () => {
   const infos: Datas[] = useDatas()
@@ -27,6 +29,9 @@ const History: NextPage = () => {
 
   return (
     <Stack alignItems="center" spacing="40px">
+      <TitleText text='対局履歴'>
+        <HistoryOutlinedIcon sx={{ width: "40px", height: "40px" }} />
+      </TitleText>
       <MyTable header={HEADER} body={genBody()} />
       <ReturnButton />
     </Stack>

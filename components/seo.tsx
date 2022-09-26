@@ -1,7 +1,8 @@
 import { NextPage } from 'next'
 import Head from 'next/head'
+import { ReactElement } from 'react'
 
-const Seo: NextPage = () => {
+const Seo: NextPage = (): ReactElement => {
   return (
     <Head>
       <title>Rating System</title>

@@ -1,8 +1,9 @@
 import { Button, useMediaQuery } from '@mui/material'
 import Link from 'next/link'
+import { ReactElement } from 'react'
 import { BORDER } from '../constants/constants'
 
-const ReturnButton = () => {
+const ReturnButton = (): ReactElement => {
   const lg: boolean = useMediaQuery(BORDER)
 
   return (

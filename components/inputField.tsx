@@ -1,4 +1,5 @@
 import { InputLabel, Stack, TextField, useMediaQuery } from "@mui/material"
+import { ReactElement } from "react"
 import { BORDER } from "../constants/constants"
 
 type Props = {
@@ -12,15 +13,16 @@ type Props = {
   type?: string
 }
 
-const InputField = (props: Props) => {
+const InputField = (props: Props): ReactElement => {
   const lg: boolean = useMediaQuery(BORDER)
 
   return (
-    <Stack sx={{ width: "100%" }}>
+    <Stack sx={{ width: lg ? "400px" : "100%" }}>
       <InputLabel>{props.label}</InputLabel>
       <TextField
         sx={{
-          width: lg ? "400px" : "100%"
+          width: lg ? "400px" : "100%",
+          backgroundColor: "white",
         }}
         variant="outlined"
         size="medium"
