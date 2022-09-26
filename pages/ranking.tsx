@@ -4,26 +4,18 @@ import { NextPage } from 'next'
 import MyTable from '../components/myTable'
 import ReturnButton from '../components/returnButton'
 import TitleText from '../components/titleText'
+import { USER_HEAD } from '../constants/constants'
 import { useUsers } from '../hooks/useUsers'
-import { Users } from '../models/types'
 
 const Ranking: NextPage = () => {
-  const infos: Users[] = useUsers()
-
-  const HEAD: string[] = ['順位', '名前', 'レート']
-
-  const genBody = (): string[][] => {
-    return infos.map((info, idx) => {
-      return [String(idx + 1), info.name, String(info.rate)]
-    })
-  }
+  const infos: string[][] = useUsers()
 
   return (
     <Stack alignItems='center' spacing='40px'>
       <TitleText text='ランキング'>
         <EmojiEventsOutlinedIcon sx={{ width: '40px', height: '40px' }} />
       </TitleText>
-      <MyTable header={HEAD} body={genBody()} />
+      <MyTable header={USER_HEAD} body={infos} />
       <ReturnButton />
     </Stack>
   )

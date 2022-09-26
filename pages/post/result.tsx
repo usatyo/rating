@@ -1,5 +1,5 @@
 import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined'
-import { Alert, Snackbar, Stack } from '@mui/material'
+import { Alert, Backdrop, CircularProgress, Snackbar, Stack } from '@mui/material'
 import { NextPage } from 'next'
 import InputField from '../../components/inputField'
 import MainButton from '../../components/mainButton'
@@ -10,9 +10,9 @@ import TitleText from '../../components/titleText'
 import usePostDatas from '../../hooks/usePostDatas'
 
 const PostResult: NextPage = () => {
-  const [data, open, errMes, setOpen, handleChange, handleClick] = usePostDatas()
+  const [data, open, errMes, loading, setOpen, handleChange, handleClick] = usePostDatas()
 
-  return (
+  return (<>
     <Stack alignItems='center' spacing='40px'>
       <TitleText text='結果入力'>
         <ModeEditOutlinedIcon sx={{ width: '40px', height: '40px' }} />
@@ -23,11 +23,14 @@ const PostResult: NextPage = () => {
       <RadioField value={data.result} handle={handleChange} />
       <MainButton text='送信' handle={handleClick} />
       <ReturnButton />
-      <Snackbar open={open} autoHideDuration={4000} onClose={() => setOpen(false)}>
-        <Alert severity='error' sx={{ backgroundColor: "#FFCCCC" }}>{errMes}</Alert>
-      </Snackbar>
     </Stack>
-  )
+    <Snackbar open={open} autoHideDuration={4000} onClose={() => setOpen(false)}>
+      <Alert severity='error' sx={{ backgroundColor: "#FFCCCC" }}>{errMes}</Alert>
+    </Snackbar>
+    <Backdrop open={loading} >
+      <CircularProgress color='warning' />
+    </Backdrop>
+  </>)
 }
 
 export default PostResult

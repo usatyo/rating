@@ -12,6 +12,7 @@ const usePostDatas = (): [
   Datas,
   boolean,
   string,
+  boolean,
   (state: boolean) => void,
   (formName: string, formValue: string) => void,
   () => void,
@@ -19,6 +20,7 @@ const usePostDatas = (): [
   const [postDate, setPostDate] = useState<Datas>(DEFAULT_DATA)
   const [open, setOpen] = useState(false)
   const [errMes, setErrMes] = useState('')
+  const [loading, setLoading] = useState(false)
   const router = useRouter()
 
   const handleChange = (formName: string, formValue: string): void => {
@@ -37,32 +39,38 @@ const usePostDatas = (): [
   }
 
   const handleClick = async (): Promise<void> => {
+    setLoading(true)
     const currentUser = await getUserInfo()
     if (
       !currentUser.some((info) => info.name === postDate.black) ||
       !currentUser.some((info) => info.name === postDate.white)
     ) {
       setErrMes('存在しない名前です')
+      setLoading(false)
       setOpen(true)
       return
     }
     if (postDate.black === postDate.white) {
       setErrMes('同一人物との対局はできません')
+      setLoading(false)
       setOpen(true)
       return
     }
     if (!Number.isInteger(postDate.handicap) || !Number.isInteger(postDate.result)) {
       setErrMes('不正な入力です')
+      setLoading(false)
       setOpen(true)
       return
     }
     if (postDate.handicap < 0 || 9 < postDate.handicap) {
       setErrMes('不正な入力です')
+      setLoading(false)
       setOpen(true)
       return
     }
     if (postDate.result < -1 || 1 < postDate.result) {
       setErrMes('不正な入力です')
+      setLoading(false)
       setOpen(true)
       return
     }
@@ -75,11 +83,12 @@ const usePostDatas = (): [
     )
     updateUserRate({ name: postDate.black, rate: new_b })
     updateUserRate({ name: postDate.white, rate: new_w })
+    setLoading(false)
     router.replace('/home')
     return
   }
 
-  return [postDate, open, errMes, setOpen, handleChange, handleClick]
+  return [postDate, open, errMes, loading, setOpen, handleChange, handleClick]
 }
 
 export default usePostDatas

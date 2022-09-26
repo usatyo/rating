@@ -26,6 +26,7 @@ const MyTable = (props: Props): ReactElement => {
       sx={{
         maxWidth: '800px',
         width: '100%',
+        borderRadius: '20px',
       }}
       component={Paper}
     >

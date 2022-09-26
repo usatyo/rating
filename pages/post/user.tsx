@@ -1,5 +1,5 @@
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined'
-import { Alert, Button, Snackbar, Stack, TextField } from '@mui/material'
+import { Alert, Backdrop, Button, CircularProgress, Snackbar, Stack, TextField } from '@mui/material'
 import { NextPage } from 'next'
 import { useState } from 'react'
 import InputField from '../../components/inputField'
@@ -13,12 +13,13 @@ const PostUser: NextPage = () => {
     data,
     open,
     errMes,
+    loading,
     setOpen,
     handleClick,
     handleChange,
   ] = usePostUsers()
 
-  return (
+  return (<>
     <Stack alignItems='center' spacing='40px'>
       <TitleText text='部員登録'>
         <PersonOutlineOutlinedIcon sx={{ width: '40px', height: '40px' }} />
@@ -33,11 +34,14 @@ const PostUser: NextPage = () => {
       />
       <MainButton text='登録' handle={handleClick} />
       <ReturnButton />
-      <Snackbar open={open} autoHideDuration={4000} onClose={() => setOpen(false)}>
-        <Alert severity='error' sx={{ backgroundColor: "#FFCCCC" }}>{errMes}</Alert>
-      </Snackbar>
     </Stack>
-  )
+    <Snackbar open={open} autoHideDuration={4000} onClose={() => setOpen(false)}>
+      <Alert severity='error' sx={{ backgroundColor: "#FFCCCC" }}>{errMes}</Alert>
+    </Snackbar>
+    <Backdrop open={loading} >
+      <CircularProgress color='warning' />
+    </Backdrop>
+  </>)
 }
 
 export default PostUser

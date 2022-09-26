@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react'
-import { DEFAULT_USER, Users } from '../models/types'
+import { Users } from '../models/types'
 import { getUserInfo } from '../repositories/userRepo'
 
-export const useUsers = (): Users[] => {
-  const [output, setOutput] = useState<Users[]>([DEFAULT_USER])
+export const useUsers = (): string[][] => {
+  const [output, setOutput] = useState<string[][]>([[]])
 
   useEffect(() => {
     void (async () => {
-      const infos = await getUserInfo()
-      setOutput(infos)
+      const infos: Users[] = await getUserInfo()
+      setOutput(infos.map((info, idx) => {
+        return [String(idx + 1), info.name, String(info.rate)]
+      }))
     })()
   }, [])
 
