@@ -8,9 +8,11 @@ export const useUsers = (): string[][] => {
   useEffect(() => {
     void (async () => {
       const infos: Users[] = await getUserInfo()
-      setOutput(infos.map((info, idx) => {
-        return [String(idx + 1), info.name, String(info.rate)]
-      }))
+      setOutput(
+        infos.map((info, idx) => {
+          return [String(idx + 1), info.name, String(info.rate)]
+        }),
+      )
     })()
   }, [])
 

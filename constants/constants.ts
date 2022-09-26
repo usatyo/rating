@@ -18,6 +18,6 @@ export const K: number = 24
 
 export const BORDER: string = '(min-width:577px)'
 
-export const DATA_HEADER: string[] = ['黒', '白', '手合い', '結果', '日付']
+export const DATA_HEADER: string[] = ['黒番', '白番', '手合い', '結果', '日付']
 
-export const USER_HEAD: string[] = ['順位', '名前', 'レート']
+export const USER_HEADER: string[] = ['順位', '名前', 'レート']

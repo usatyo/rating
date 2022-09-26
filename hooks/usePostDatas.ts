@@ -5,8 +5,7 @@ import { setDataInfo } from '../repositories/dataRepo'
 import { getUserInfo, updateUserRate } from '../repositories/userRepo'
 import { calc_rate } from '../utils/util'
 
-interface LocalDatas {
-}
+interface LocalDatas {}
 
 const usePostDatas = (): [
   Datas,

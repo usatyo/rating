@@ -14,7 +14,7 @@ const usePostUsers = (): [
 ] => {
   const [postUser, setPostUser] = useState<Users>(DEFAULT_USER)
   const [open, setOpen] = useState(false)
-  const [errMes, setErrMes] = useState("")
+  const [errMes, setErrMes] = useState('')
   const [loading, setLoading] = useState(false)
   const router = useRouter()
 
@@ -62,15 +62,7 @@ const usePostUsers = (): [
     return
   }
 
-  return [
-    postUser,
-    open,
-    errMes,
-    loading,
-    setOpen,
-    handleClick,
-    handleChange
-  ]
+  return [postUser, open, errMes, loading, setOpen, handleClick, handleChange]
 }
 
 export default usePostUsers

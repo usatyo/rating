@@ -1,6 +1,4 @@
 import {
-  Box,
-  Divider,
   Paper,
   Table,
   TableBody,
@@ -58,7 +56,7 @@ const MyTable = (props: Props): ReactElement => {
                 </TableRow>
                 {infos.map((val, idx) => (
                   <TableRow key={idx}>
-                    <TableCell>{props.header[idx]}</TableCell>
+                    <TableCell sx={{ textAlign: 'center' }}>{props.header[idx]}</TableCell>
                     <TableCell>{val}</TableCell>
                   </TableRow>
                 ))}
