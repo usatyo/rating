@@ -1,4 +1,4 @@
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, useMediaQuery } from "@mui/material"
+import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, useMediaQuery } from "@mui/material"
 import { BORDER } from "../constants/constants"
 
 type Props = {
@@ -13,37 +13,48 @@ const MyTable = (props: Props) => {
     <TableContainer
       sx={{
         maxWidth: "800px",
+        width: "80%",
         marginX: "auto",
         marginTop: "40px",
       }}
       component={Paper}
     >
       <Table>
-        <TableHead>
+        <TableHead sx={{ display: lg ? "" : "none" }}>
           <TableRow>
             {props.header.map((info, idx) => (
               <TableCell
-                sx={{
-                  textAlign: "center",
-                }}
+                sx={{ textAlign: "center" }}
                 key={idx}
-                >{info}</TableCell>
-                ))}
+              >{info}</TableCell>
+            ))}
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.body.map((infos, idx1) => (
-            <TableRow key={idx1}>
-              {infos.map((info, idx2) => (
-                <TableCell 
-                  sx={{
-                    textAlign: "center",
-                  }}
-                  key={idx2}
-                >{info}</TableCell>
+          {props.body.map((infos, idx1) => {
+            return (lg ? (
+              <TableRow key={idx1}>
+                {infos.map((info, idx2) => (
+                  <TableCell
+                    sx={{ textAlign: "center" }}
+                    key={idx2}
+                  >{info}</TableCell>
+                ))}
+              </TableRow>
+            ) : (<>
+              <TableRow sx={{ backgroundColor: "#EEEEEE" }}>
+                <TableCell></TableCell>
+                <TableCell></TableCell>
+              </TableRow>
+              {infos.map((val, idx) => (
+                <TableRow>
+                  <TableCell>{props.header[idx]}</TableCell>
+                  <TableCell>{val}</TableCell>
+                </TableRow>
               ))}
-            </TableRow>
-          ))}
+            </>
+            ))
+          })}
         </TableBody>
       </Table>
     </TableContainer>

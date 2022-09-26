@@ -1,4 +1,4 @@
-import { Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
+import { Stack } from '@mui/material'
 import { NextPage } from 'next'
 import MyTable from '../components/myTable'
 import ReturnButton from '../components/returnButton'
@@ -9,7 +9,7 @@ import { Datas } from '../models/types'
 const History: NextPage = () => {
   const infos: Datas[] = useDatas()
 
-  const HEADER = ["黒", "白", "ハンデ", "結果", "日付"]
+  const HEADER = ["黒", "白", "手合い", "結果", "日付"]
 
   const genBody = (): string[][] => {
     return infos.map((info) => {

@@ -15,15 +15,15 @@ const SelectField = (props: Props) => {
   return (
     <Box
       sx={{
+        width: lg ? "400px" : "80%",
         marginX: "auto",
         marginTop: "40px",
-        paddingX: lg ? "0" : "30px",
       }}
     >
-      <InputLabel>ハンデ</InputLabel>
+      <InputLabel>手合い</InputLabel>
       <Select
         sx={{
-          width: "400px",
+          width: lg ? "400px" : "100%",
         }}
         value={props.value}
         onChange={(e) => props.handle("handicap", String(e.target.value))}

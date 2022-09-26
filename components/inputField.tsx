@@ -1,4 +1,4 @@
-import { Box, InputLabel, TextField, useMediaQuery } from "@mui/material"
+import { Box, InputLabel, Stack, TextField, useMediaQuery } from "@mui/material"
 import { BORDER } from "../constants/constants"
 
 type Props = {
@@ -16,17 +16,15 @@ const InputField = (props: Props) => {
   const lg: boolean = useMediaQuery(BORDER)
 
   return (
-    <Box
-      sx={{
-        marginX: "auto",
-        marginTop: "40px",
-        paddingX: lg ? "0" : "30px",
-      }}
-    >
+    <Stack sx={{
+      marginTop: "40px",
+      width: lg ? "400px" : "80%",
+      marginX: "auto",
+    }}>
       <InputLabel>{props.label}</InputLabel>
       <TextField
         sx={{
-          width: "400px",
+          width: lg ? "400px" : "100%",
         }}
         variant="outlined"
         size="medium"
@@ -34,7 +32,7 @@ const InputField = (props: Props) => {
         value={props.value}
         onChange={(e) => props.handle(props.name, e.target.value)}
       />
-    </Box>
+    </Stack>
   )
 }
 

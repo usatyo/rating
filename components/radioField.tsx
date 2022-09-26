@@ -15,9 +15,9 @@ const RadioField = (props: Props) => {
   return (
     <Box
       sx={{
+        width: lg ? "400px" : "80%",
         marginX: "auto",
         marginTop: "40px",
-        paddingX: lg ? "0" : "30px",
       }}
     >
       <InputLabel>結果</InputLabel>
@@ -27,7 +27,7 @@ const RadioField = (props: Props) => {
       >
         <Stack 
           sx={{
-            width: "400px"
+            width: lg ? "400px" : "100%",
           }}
           direction="row"
           justifyContent="space-between"

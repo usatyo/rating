@@ -1,4 +1,4 @@
-import { Box, Button, useMediaQuery } from "@mui/material";
+import { Button, useMediaQuery } from "@mui/material";
 import { BORDER } from "../constants/constants";
 
 type Props = {
@@ -10,26 +10,20 @@ const MainButton = (props: Props) => {
   const lg: boolean = useMediaQuery(BORDER)
 
   return (
-    <Box
+    <Button
       sx={{
+        width: lg ? "400px" : "80%",
+        height: "50px",
         marginX: "auto",
         marginTop: "40px",
-        paddingX: lg ? "0" : "30px"
+        borderRadius: "25px",
+        fontSize: "16px",
       }}
+      variant="contained"
+      onClick={props.handle}
     >
-      <Button
-        sx={{
-          width: "400px",
-          height: "50px",
-          borderRadius: "25px",
-          fontSize: "16px",
-        }}
-        variant="contained"
-        onClick={props.handle}
-      >
-        {props.text}
-      </Button>
-    </Box>
+      {props.text}
+    </Button>
   )
 }
 
