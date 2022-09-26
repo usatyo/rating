@@ -25,7 +25,7 @@ const usePostUsers = (): [Users, LocalUsers] => {
 
   const handleClick = async () => {
     const currentUser = await getUserInfo()
-    if (postUser.name === "") {
+    if (postUser.name === '') {
       console.info('empty name')
       alert('empty name error')
       return

@@ -1,17 +1,17 @@
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
 import { Stack } from '@mui/material'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import MainButton from '../components/mainButton'
 import TitleText from '../components/titleText'
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 
 const Home: NextPage = () => {
   const router = useRouter()
 
   return (
-    <Stack alignItems="center" spacing="40px">
+    <Stack alignItems='center' spacing='40px'>
       <TitleText text='ホーム'>
-        <HomeOutlinedIcon sx={{ width: "40px", height: "40px" }} />
+        <HomeOutlinedIcon sx={{ width: '40px', height: '40px' }} />
       </TitleText>
       <MainButton text='レートランキング' handle={() => router.replace('/ranking')} />
       <MainButton text='対局履歴' handle={() => router.replace('/history')} />

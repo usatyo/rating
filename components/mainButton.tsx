@@ -1,6 +1,6 @@
-import { Button, useMediaQuery } from "@mui/material";
-import { ReactElement } from "react";
-import { BORDER } from "../constants/constants";
+import { Button, useMediaQuery } from '@mui/material'
+import { ReactElement } from 'react'
+import { BORDER } from '../constants/constants'
 
 type Props = {
   text: string
@@ -13,12 +13,12 @@ const MainButton = (props: Props): ReactElement => {
   return (
     <Button
       sx={{
-        width: lg ? "400px" : "100%",
-        height: "50px",
-        borderRadius: "25px",
-        fontSize: "16px",
+        width: lg ? '400px' : '100%',
+        height: '50px',
+        borderRadius: '25px',
+        fontSize: '16px',
       }}
-      variant="contained"
+      variant='contained'
       onClick={props.handle}
     >
       {props.text}

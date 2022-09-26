@@ -10,13 +10,15 @@ const ReturnButton = (): ReactElement => {
     <Link href='/home'>
       <Button
         sx={{
-          width: lg ? "400px" : "100%",
-          height: "50px",
-          borderRadius: "25px",
-          fontSize: "16px",
+          width: lg ? '400px' : '100%',
+          height: '50px',
+          borderRadius: '25px',
+          fontSize: '16px',
         }}
         variant='outlined'
-      >もどる</Button>
+      >
+        もどる
+      </Button>
     </Link>
   )
 }

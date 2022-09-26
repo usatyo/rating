@@ -16,4 +16,4 @@ export const RESULT: string[] = ['黒勝ち', '持碁', '白勝ち']
 // レートの変動のしやすさ
 export const K: number = 24
 
-export const BORDER: string = "(min-width:577px)"
+export const BORDER: string = '(min-width:577px)'
