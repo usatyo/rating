@@ -7,7 +7,7 @@ const Home: NextPage = () => {
   const router = useRouter()
 
   return (
-    <Stack>
+    <Stack alignItems="center" spacing="40px">
       <MainButton text='レートランキング' handle={() => router.replace('/ranking')} />
       <MainButton text='対局履歴' handle={() => router.replace('/history')} />
       <MainButton text='結果入力' handle={() => router.replace('/post/result')} />

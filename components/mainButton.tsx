@@ -12,10 +12,8 @@ const MainButton = (props: Props) => {
   return (
     <Button
       sx={{
-        width: lg ? "400px" : "80%",
+        width: lg ? "400px" : "100%",
         height: "50px",
-        marginX: "auto",
-        marginTop: "40px",
         borderRadius: "25px",
         fontSize: "16px",
       }}

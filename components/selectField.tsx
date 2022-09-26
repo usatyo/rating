@@ -1,4 +1,4 @@
-import { Box, InputLabel, MenuItem, Select, useMediaQuery } from "@mui/material"
+import { Box, InputLabel, MenuItem, Select, Stack, useMediaQuery } from "@mui/material"
 import { BORDER, HANDICAP } from "../constants/constants"
 
 type Props = {
@@ -13,13 +13,7 @@ const SelectField = (props: Props) => {
   const lg: boolean = useMediaQuery(BORDER)
 
   return (
-    <Box
-      sx={{
-        width: lg ? "400px" : "80%",
-        marginX: "auto",
-        marginTop: "40px",
-      }}
-    >
+    <Stack sx={{ width: "100%" }}>
       <InputLabel>手合い</InputLabel>
       <Select
         sx={{
@@ -32,7 +26,7 @@ const SelectField = (props: Props) => {
           <MenuItem value={idx} key={idx}>{val}</MenuItem>
         ))}
       </Select>
-    </Box>
+    </Stack>
   )
 }
 

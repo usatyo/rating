@@ -9,7 +9,7 @@ const PostUser: NextPage = () => {
   const [data, { change: handleChange, click: handleClick }] = usePostUsers()
 
   return (
-    <Stack>
+    <Stack alignItems="center" spacing="40px">
       <InputField label='名前' value={data.name} name="name" handle={handleChange} />
       <InputField
         label='初期レート'

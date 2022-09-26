@@ -13,9 +13,7 @@ const MyTable = (props: Props) => {
     <TableContainer
       sx={{
         maxWidth: "800px",
-        width: "80%",
-        marginX: "auto",
-        marginTop: "40px",
+        width: "100%",
       }}
       component={Paper}
     >
@@ -42,7 +40,7 @@ const MyTable = (props: Props) => {
                 ))}
               </TableRow>
             ) : (<>
-              <TableRow sx={{ backgroundColor: "#EEEEEE" }}>
+              <TableRow sx={{ backgroundColor: "#F3F3F3" }}>
                 <TableCell></TableCell>
                 <TableCell></TableCell>
               </TableRow>

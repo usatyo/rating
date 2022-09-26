@@ -13,19 +13,13 @@ const RadioField = (props: Props) => {
   const lg: boolean = useMediaQuery(BORDER)
 
   return (
-    <Box
-      sx={{
-        width: lg ? "400px" : "80%",
-        marginX: "auto",
-        marginTop: "40px",
-      }}
-    >
+    <Stack sx={{ width: "100%" }}>
       <InputLabel>結果</InputLabel>
       <RadioGroup
         onChange={(e) => props.handle("result", String(e.target.value))}
         value={props.value}
       >
-        <Stack 
+        <Stack
           sx={{
             width: lg ? "400px" : "100%",
           }}
@@ -37,7 +31,7 @@ const RadioField = (props: Props) => {
           ))}
         </Stack>
       </RadioGroup>
-    </Box>
+    </Stack>
   )
 }
 

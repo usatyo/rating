@@ -21,7 +21,7 @@ const Ranking: NextPage = () => {
   }
 
   return (
-    <Stack>
+    <Stack alignItems="center" spacing="40px">
       <MyTable header={HEAD} body={genBody()} />
       <ReturnButton />
     </Stack>

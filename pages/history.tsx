@@ -26,7 +26,7 @@ const History: NextPage = () => {
   }
 
   return (
-    <Stack>
+    <Stack alignItems="center" spacing="40px">
       <MyTable header={HEADER} body={genBody()} />
       <ReturnButton />
     </Stack>
