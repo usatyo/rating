@@ -33,7 +33,7 @@ const PostResult: NextPage = () => {
           onChange={(e) => handleChange("handicap", String(e.target.value))}
         >
           {HANDICAP.map((val, idx) => (
-            <MenuItem value={idx}>{val}</MenuItem>
+            <MenuItem value={idx} key={idx}>{val}</MenuItem>
           ))}
         </Select>
       </Stack>
@@ -45,7 +45,7 @@ const PostResult: NextPage = () => {
         >
           <Stack direction="row">
             {RESULT.map((val, idx) => (
-              <FormControlLabel value={idx - 1} control={<Radio />} label={val} />
+              <FormControlLabel value={idx - 1} control={<Radio />} label={val} key={idx} />
             ))}
           </Stack>
         </RadioGroup>

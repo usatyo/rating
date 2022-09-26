@@ -20,7 +20,7 @@ const Ranking: NextPage = () => {
           </TableHead>
           <TableBody>
             {infos.map((info, idx) => (
-              <TableRow>
+              <TableRow key={idx}>
                 <TableCell>{idx + 1}</TableCell>
                 <TableCell>{info.name}</TableCell>
                 <TableCell>{info.rate}</TableCell>

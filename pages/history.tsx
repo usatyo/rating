@@ -23,7 +23,7 @@ const History: NextPage = () => {
           </TableHead>
           <TableBody>
             {infos.map((info, idx) => (
-              <TableRow>
+              <TableRow key={idx}>
                 <TableCell>{info.black}</TableCell>
                 <TableCell>{info.white}</TableCell>
                 <TableCell>{HANDICAP[info.handicap]}</TableCell>

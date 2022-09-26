@@ -7,14 +7,19 @@ import { Datas } from '../models/types'
 const db = getFirestore(app)
 
 export const getDataInfo = async (): Promise<Datas[]> => {
-  const querySnapshot = await getDocs(collection(db, 'datas'))
-  let ret = new Array<Datas>()
-  querySnapshot.forEach((doc) => {
-    const user: Datas = doc.data() as Datas
-    ret.push({ ...user })
-  })
-  ret.sort((a, b) => b.date.seconds - a.date.seconds)
-  return ret
+  try {
+    const querySnapshot = await getDocs(collection(db, 'datas'))
+    let ret = new Array<Datas>()
+    querySnapshot.forEach((doc) => {
+      const user: Datas = doc.data() as Datas
+      ret.push({ ...user })
+    })
+    ret.sort((a, b) => b.date.seconds - a.date.seconds)
+    return ret
+  } catch (err) {
+    // return new Array<Datas>()
+    throw err
+  }
 }
 
 export const setDataInfo = async (data: Datas): Promise<void> => {
