@@ -1,22 +1,23 @@
+import { Button, Stack } from '@mui/material'
 import { NextPage } from 'next'
 import Link from 'next/link'
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <Stack>
       <Link href='/ranking'>
-        <h1>ranking</h1>
+        <Button variant='contained'>レートランキング</Button>
       </Link>
       <Link href='/history'>
-        <h1>history</h1>
+        <Button variant='contained'>対局履歴</Button>
       </Link>
       <Link href='/post/result'>
-        <h1>post result</h1>
+        <Button variant='contained'>結果入力</Button>
       </Link>
       <Link href='/post/user'>
-        <h1>register user</h1>
+        <Button variant='contained'>部員登録</Button>
       </Link>
-    </div>
+    </Stack>
   )
 }
 

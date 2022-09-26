@@ -4,9 +4,7 @@ import { DEFAULT_USER, Users } from '../models/types'
 import { getUserInfo, setUserInfo } from '../repositories/userRepo'
 
 interface LocalUsers {
-  change: (
-    event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>,
-  ) => void
+  change: (formName: string, formValue: string) => void
   click: () => void
 }
 
@@ -14,14 +12,12 @@ const usePostUsers = (): [Users, LocalUsers] => {
   const [postUser, setPostUser] = useState<Users>(DEFAULT_USER)
   const router = useRouter()
 
-  const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>,
-  ): void => {
+  const handleChange = (formName: string, formValue: string): void => {
     const changedUser: Users = { ...postUser }
-    if (event.target.name === 'name') {
-      changedUser.name = event.target.value
-    } else if (event.target.name === 'rate') {
-      changedUser.rate = Number(event.target.value)
+    if (formName === 'name') {
+      changedUser.name = String(formValue)
+    } else if (formName === 'rate') {
+      changedUser.rate = Number(formValue)
     }
     setPostUser(changedUser)
     return
@@ -29,6 +25,11 @@ const usePostUsers = (): [Users, LocalUsers] => {
 
   const handleClick = async () => {
     const currentUser = await getUserInfo()
+    if (postUser.name === "") {
+      console.info('empty name')
+      alert('empty name error')
+      return
+    }
     if (currentUser.some((info) => info.name === postUser.name)) {
       console.info('exist same name')
       alert('same name error')

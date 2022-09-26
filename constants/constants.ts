@@ -11,7 +11,7 @@ export const HANDICAP: string[] = [
   '九子',
 ]
 
-export const RESULT: string[] = ['黒の勝ち', '持碁', '白の勝ち']
+export const RESULT: string[] = ['黒勝ち', '持碁', '白勝ち']
 
 // レートの変動のしやすさ
 export const K: number = 24

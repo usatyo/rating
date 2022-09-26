@@ -1,3 +1,4 @@
+import { Paper, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
 import { NextPage } from 'next'
 import ReturnButton from '../components/returnButton'
 import { useUsers } from '../hooks/useUsers'
@@ -7,27 +8,29 @@ const Ranking: NextPage = () => {
   const infos: Users[] = useUsers()
 
   return (
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>rank</th>
-            <th>name</th>
-            <th>rate</th>
-          </tr>
-        </thead>
-        <tbody>
-          {infos.map((info, idx) => (
-            <tr key={idx}>
-              <td>{idx + 1}</td>
-              <td>{info.name}</td>
-              <td>{info.rate}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <Stack>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>順位</TableCell>
+              <TableCell>名前</TableCell>
+              <TableCell>レート</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {infos.map((info, idx) => (
+              <TableRow>
+                <TableCell>{idx + 1}</TableCell>
+                <TableCell>{info.name}</TableCell>
+                <TableCell>{info.rate}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
       <ReturnButton />
-    </div>
+    </Stack>
   )
 }
 
