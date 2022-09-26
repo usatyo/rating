@@ -40,6 +40,11 @@ const usePostUsers = (): [Users, LocalUsers] => {
       alert('not number error')
       return
     }
+    if (!Number.isInteger(postUser.rate)) {
+      console.info('rate not integer')
+      alert('not integer error')
+      return
+    }
     setUserInfo(postUser)
     router.replace('/home')
     return

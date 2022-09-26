@@ -16,7 +16,8 @@ const MainButton = (props: Props) => {
           height: "50px",
           borderRadius: "25px",
           marginX: "auto",
-          marginY: "20px"
+          marginTop: "40px",
+          fontSize: "16px",
         }}
         variant="contained"
         onClick={props.handle}

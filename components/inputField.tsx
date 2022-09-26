@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material"
+import { Box, InputLabel, TextField } from "@mui/material"
 
 type Props = {
   label: string
@@ -8,23 +8,29 @@ type Props = {
     name: string,
     value: string
   ) => void
+  type?: string
 }
 
 const InputField = (props: Props) => {
   return (
-    <TextField
+    <Box
       sx={{
-        width: "400px",
         marginX: "auto",
-        marginY: "20px",
-        padding: "0"
+        marginTop: "40px",
       }}
-      variant="outlined"
-      size="medium"
-      label={props.label}
-      value={props.value}
-      onChange={(e) => props.handle(props.name, e.target.value)}
-    />
+    >
+      <InputLabel>{props.label}</InputLabel>
+      <TextField
+        sx={{
+          width: "400px",
+        }}
+        variant="outlined"
+        size="medium"
+        type={props.type}
+        value={props.value}
+        onChange={(e) => props.handle(props.name, e.target.value)}
+      />
+    </Box>
   )
 }
 

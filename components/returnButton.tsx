@@ -11,7 +11,8 @@ const ReturnButton = () => {
           height: "50px",
           borderRadius: "25px",
           marginX: "auto",
-          marginY: "20px"
+          marginTop: "40px",
+          fontSize: "16px",
         }}
         variant='outlined'
       >もどる</Button>
