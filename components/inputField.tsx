@@ -1,4 +1,4 @@
-import { Box, InputLabel, TextField } from "@mui/material"
+import { Box, InputLabel, TextField, useMediaQuery } from "@mui/material"
 
 type Props = {
   label: string
@@ -12,11 +12,14 @@ type Props = {
 }
 
 const InputField = (props: Props) => {
+  const lg: boolean = useMediaQuery("(min-width:577px)")
+
   return (
     <Box
       sx={{
         marginX: "auto",
         marginTop: "40px",
+        paddingX: lg ? "0" : "30px",
       }}
     >
       <InputLabel>{props.label}</InputLabel>

@@ -1,22 +1,26 @@
-import { Button } from "@mui/material";
-import Link from "next/link";
+import { Box, Button, useMediaQuery } from "@mui/material";
 
 type Props = {
   text: string
-  href: string
   handle?: () => void
 }
 
 const MainButton = (props: Props) => {
+  const lg: boolean = useMediaQuery("(min-width:577px)")
+
   return (
-    <Link href={props.href}>
+    <Box
+      sx={{
+        marginX: "auto",
+        marginTop: "40px",
+        paddingX: lg ? "0" : "30px"
+      }}
+    >
       <Button
         sx={{
-          width: "300px",
+          width: "400px",
           height: "50px",
           borderRadius: "25px",
-          marginX: "auto",
-          marginTop: "40px",
           fontSize: "16px",
         }}
         variant="contained"
@@ -24,7 +28,7 @@ const MainButton = (props: Props) => {
       >
         {props.text}
       </Button>
-    </Link>
+    </Box>
   )
 }
 

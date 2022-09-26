@@ -1,4 +1,4 @@
-import { Box, FormControlLabel, InputLabel, Radio, RadioGroup, Stack } from "@mui/material"
+import { Box, FormControlLabel, InputLabel, Radio, RadioGroup, Stack, useMediaQuery } from "@mui/material"
 import { RESULT } from "../constants/constants"
 
 type Props = {
@@ -10,11 +10,14 @@ type Props = {
 }
 
 const RadioField = (props: Props) => {
+  const lg: boolean = useMediaQuery("(min-width:577px)")
+
   return (
     <Box
       sx={{
         marginX: "auto",
         marginTop: "40px",
+        paddingX: lg ? "0" : "30px",
       }}
     >
       <InputLabel>結果</InputLabel>

@@ -1,22 +1,30 @@
-import { Button } from '@mui/material'
+import { Box, Button, useMediaQuery } from '@mui/material'
 import { NextPage } from 'next'
 import Link from 'next/link'
 
 const ReturnButton = () => {
+  const lg: boolean = useMediaQuery("(min-width:577px)")
+  
   return (
-    <Link href='/home'>
-      <Button
-        sx={{
-          width: "300px",
-          height: "50px",
-          borderRadius: "25px",
-          marginX: "auto",
-          marginTop: "40px",
-          fontSize: "16px",
-        }}
-        variant='outlined'
-      >もどる</Button>
-    </Link>
+    <Box
+      sx={{
+        marginX: "auto",
+        marginTop: "40px",
+        paddingX: lg ? "0" : "30px"
+      }}
+    >
+      <Link href='/home'>
+        <Button
+          sx={{
+            width: "400px",
+            height: "50px",
+            borderRadius: "25px",
+            fontSize: "16px",
+          }}
+          variant='outlined'
+        >もどる</Button>
+      </Link>
+    </Box>
   )
 }
 

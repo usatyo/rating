@@ -18,7 +18,7 @@ const PostUser: NextPage = () => {
         handle={handleChange}
         type="number"
       />
-      <MainButton text='登録' href='' handle={handleClick} />
+      <MainButton text='登録' handle={handleClick} />
       <ReturnButton />
     </Stack>
   )
