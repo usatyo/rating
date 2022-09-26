@@ -1,4 +1,5 @@
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material"
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, useMediaQuery } from "@mui/material"
+import { BORDER } from "../constants/constants"
 
 type Props = {
   header: string[]
@@ -6,21 +7,40 @@ type Props = {
 }
 
 const MyTable = (props: Props) => {
+  const lg: boolean = useMediaQuery(BORDER)
+
   return (
-    <TableContainer component={Paper}>
+    <TableContainer
+      sx={{
+        maxWidth: "800px",
+        marginX: "auto",
+        marginTop: "40px",
+      }}
+      component={Paper}
+    >
       <Table>
         <TableHead>
           <TableRow>
             {props.header.map((info, idx) => (
-              <TableCell key={idx}>{info}</TableCell>
-            ))}
+              <TableCell
+                sx={{
+                  textAlign: "center",
+                }}
+                key={idx}
+                >{info}</TableCell>
+                ))}
           </TableRow>
         </TableHead>
         <TableBody>
           {props.body.map((infos, idx1) => (
             <TableRow key={idx1}>
               {infos.map((info, idx2) => (
-                <TableCell key={idx2}>{info}</TableCell>
+                <TableCell 
+                  sx={{
+                    textAlign: "center",
+                  }}
+                  key={idx2}
+                >{info}</TableCell>
               ))}
             </TableRow>
           ))}

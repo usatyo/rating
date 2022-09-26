@@ -1,9 +1,10 @@
 import { Box, Button, useMediaQuery } from '@mui/material'
 import { NextPage } from 'next'
 import Link from 'next/link'
+import { BORDER } from '../constants/constants'
 
 const ReturnButton = () => {
-  const lg: boolean = useMediaQuery("(min-width:577px)")
+  const lg: boolean = useMediaQuery(BORDER)
   
   return (
     <Box

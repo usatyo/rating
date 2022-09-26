@@ -1,4 +1,5 @@
 import { Box, Button, useMediaQuery } from "@mui/material";
+import { BORDER } from "../constants/constants";
 
 type Props = {
   text: string
@@ -6,7 +7,7 @@ type Props = {
 }
 
 const MainButton = (props: Props) => {
-  const lg: boolean = useMediaQuery("(min-width:577px)")
+  const lg: boolean = useMediaQuery(BORDER)
 
   return (
     <Box

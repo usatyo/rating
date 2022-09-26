@@ -1,4 +1,5 @@
 import { Box, InputLabel, TextField, useMediaQuery } from "@mui/material"
+import { BORDER } from "../constants/constants"
 
 type Props = {
   label: string
@@ -12,7 +13,7 @@ type Props = {
 }
 
 const InputField = (props: Props) => {
-  const lg: boolean = useMediaQuery("(min-width:577px)")
+  const lg: boolean = useMediaQuery(BORDER)
 
   return (
     <Box

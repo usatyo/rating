@@ -1,5 +1,5 @@
 import { Box, InputLabel, MenuItem, Select, useMediaQuery } from "@mui/material"
-import { HANDICAP } from "../constants/constants"
+import { BORDER, HANDICAP } from "../constants/constants"
 
 type Props = {
   value: number
@@ -10,7 +10,7 @@ type Props = {
 }
 
 const SelectField = (props: Props) => {
-  const lg: boolean = useMediaQuery("(min-width:577px)")
+  const lg: boolean = useMediaQuery(BORDER)
 
   return (
     <Box
