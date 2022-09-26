@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { Datas, DEFAULT_DATA } from '../models/types'
-import { getDataInfo, setDataInfo } from '../repositories/dataRepo'
+import { setDataInfo } from '../repositories/dataRepo'
 import { getUserInfo, updateUserRate } from '../repositories/userRepo'
 import { calc_rate } from '../utils/util'
 
@@ -29,7 +29,7 @@ const usePostDatas = (): [Datas, LocalDatas] => {
     return
   }
 
-  const handleClick = async () => {
+  const handleClick = async (): Promise<void> => {
     const currentUser = await getUserInfo()
     if (
       !currentUser.some((info) => info.name === postDate.black) ||

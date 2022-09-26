@@ -1,5 +1,6 @@
 import { Button, Stack, TextField } from '@mui/material'
 import { NextPage } from 'next'
+import MainButton from '../../components/mainButton'
 import ReturnButton from '../../components/returnButton'
 import usePostUsers from '../../hooks/usePostUsers'
 
@@ -25,9 +26,7 @@ const PostUser: NextPage = () => {
           onChange={(e) => handleChange("rate", e.target.value)}
         />
       </Stack>
-      <Button variant='contained' onClick={handleClick}>
-        登録
-      </Button>
+      <MainButton text='登録' href='' handle={handleClick} />
       <ReturnButton />
     </Stack>
   )

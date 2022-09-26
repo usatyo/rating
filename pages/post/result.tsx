@@ -1,5 +1,7 @@
 import { Box, Button, FormControlLabel, FormLabel, MenuItem, Radio, RadioGroup, Select, Stack, TextField } from '@mui/material'
 import { NextPage } from 'next'
+import InputField from '../../components/inputField'
+import MainButton from '../../components/mainButton'
 import ReturnButton from '../../components/returnButton'
 import { HANDICAP, RESULT } from '../../constants/constants'
 import usePostDatas from '../../hooks/usePostDatas'
@@ -9,24 +11,9 @@ const PostResult: NextPage = () => {
 
   return (
     <Stack>
+      <InputField label='黒番' value={data.black} name="black" handle={handleChange} />
+      <InputField label='白番' value={data.white} name="white" handle={handleChange} />
       <Stack>
-        <TextField
-          variant='outlined'
-          label='黒番'
-          value={data.black}
-          onChange={(e) => handleChange("black", e.target.value)}
-        />
-      </Stack>
-      <Stack>
-        <TextField
-          variant='outlined'
-          label='白番'
-          value={data.white}
-          onChange={(e) => handleChange("white", e.target.value)}
-        />
-      </Stack>
-      <Stack>
-        {/* <label>ハンデ</label> */}
         <Select
           value={data.handicap}
           label='ハンデ'
@@ -50,9 +37,7 @@ const PostResult: NextPage = () => {
           </Stack>
         </RadioGroup>
       </Stack>
-      <Button variant='contained' onClick={handleClick}>
-        送信
-      </Button>
+      <MainButton text='送信' href='' handle={handleClick} />
       <ReturnButton />
     </Stack>
   )
