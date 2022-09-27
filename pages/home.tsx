@@ -13,7 +13,7 @@ import { useUsers } from '../hooks/useUsers'
 
 const Home: NextPage = () => {
   const lg: boolean = useMediaQuery(BORDER)
-  const topDatas: string[][] = useDatas()
+  const [topDatas, ,]: [string[][], string, (name: string, value: string) => void] = useDatas()
   const topUsers: string[][] = useUsers()
   const router = useRouter()
 

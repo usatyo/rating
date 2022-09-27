@@ -4,17 +4,16 @@ import { Datas } from '../models/types'
 import { getDataInfo } from '../repositories/dataRepo'
 
 export const useDatas = (): [string[][], string, (name: string, value: string) => void] => {
-  const [output, setOutput] = useState<string[][]>([[]])
+  const empty = [["", "", "", "", ""]]
+  const [original, setOriginal] = useState<string[][]>(empty)
+  const [output, setOutput] = useState<string[][]>(empty)
   const [prefix, setPrefix] = useState<string>("")
 
   useEffect(() => {
     void (async () => {
       const infos: Datas[] = await getDataInfo()
-      setOutput(
+      setOriginal(
         infos.map((info) => {
-          if (!info.black.includes(prefix) && !info.white.includes(prefix)) {
-            return []
-          }
           return [
             info.black,
             info.white,
@@ -26,10 +25,21 @@ export const useDatas = (): [string[][], string, (name: string, value: string) =
             ' / ' +
             String(info.date.toDate().getDate()),
           ]
-        }).filter(info => info),
+        })
       )
     })()
-  }, [prefix])
+  }, [])
+
+  useEffect(() => {
+    setOutput(
+      original.map((info) => {
+        if (!info[0].includes(prefix) && !info[1].includes(prefix)) {
+          return []
+        }
+        return info
+      }).filter(e => e)
+    )
+  }, [original, prefix])
 
   const handleChange = (name: string, value: string): void => {
     setPrefix(value)
