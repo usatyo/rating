@@ -38,10 +38,12 @@ const PostUser: NextPage = () => {
             handle={handleChange}
             type='number'
           />
-          <Typography>1級と初段の境界が1500の設定です</Typography>
+          <Typography>1級と初段の境界が1500くらいです</Typography>
           <Typography>1段級の差は50です</Typography>
-          <Typography>3段&rarr;1600~1649</Typography>
-          <Typography>3級&rarr;1350~1399</Typography>
+          <Typography>7段 &rarr; 1800~1849</Typography>
+          <Typography>3段 &rarr; 1600~1649</Typography>
+          <Typography>3級 &rarr; 1350~1399</Typography>
+          <Typography>7級 &rarr; 1150~1199</Typography>
         </Stack>
         <MainButton text='登録' handle={handleClick} />
         <ReturnButton />
