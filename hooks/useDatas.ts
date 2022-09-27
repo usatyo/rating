@@ -15,7 +15,7 @@ export const useDatas = (): string[][] => {
             info.black,
             info.white,
             HANDICAP[info.handicap],
-            RESULT[info.result],
+            RESULT[info.result + 1],
             String(info.date.toDate().getFullYear()) +
               ' / ' +
               String(info.date.toDate().getMonth() + 1) +

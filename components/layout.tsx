@@ -1,6 +1,6 @@
-import { ReactElement } from "react";
-import Footer from "./footer";
-import Header from "./header";
+import { ReactElement } from 'react'
+import Footer from './footer'
+import Header from './header'
 
 type Props = {
   readonly children?: ReactElement

@@ -14,7 +14,7 @@ export const useUsers = (): string[][] => {
           return [
             String(idx + 1),
             info.name,
-            String(info.rate) + " (" + rate_to_rank(info.rate) + ")"
+            String(info.rate) + ' (' + rate_to_rank(info.rate) + ')',
           ]
         }),
       )

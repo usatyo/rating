@@ -27,10 +27,7 @@ const PostUser: NextPage = () => {
           <PersonOutlineOutlinedIcon sx={{ width: '40px', height: '40px' }} />
         </TitleText>
         <InputField label='名前' value={data.name} name='name' handle={handleChange} />
-        <Stack
-          sx={{ width: lg ? '400px' : '100%', color: "#777" }}
-          alignItems="end"
-        >
+        <Stack sx={{ width: lg ? '400px' : '100%', color: '#777' }} alignItems='end'>
           <InputField
             label='初期レート'
             value={String(data.rate ? data.rate : undefined)}
