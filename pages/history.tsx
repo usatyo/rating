@@ -9,7 +9,8 @@ import { DATA_HEADER } from '../constants/constants'
 import { useDatas } from '../hooks/useDatas'
 
 const History: NextPage = () => {
-  const [infos, prefix, handleChange]: [string[][], string, (name: string, value: string) => void] = useDatas()
+  const [infos, prefix, handleChange]: [string[][], string, (name: string, value: string) => void] =
+    useDatas()
 
   return (
     <Stack alignItems='center' spacing='40px'>
