@@ -30,12 +30,12 @@ const Home: NextPage = () => {
       <TitleText text='レート上位'>
         <TrendingUpIcon sx={{ width: '40px', height: '40px' }} />
       </TitleText>
-      <MyTable header={USER_HEADER} body={topUsers.slice(0, 5)} />
+      <MyTable header={USER_HEADER} body={topUsers.slice(0, lg ? 5 : 3)} />
       <div></div>
       <TitleText text='最近の対局'>
         <HourglassEmptyIcon sx={{ width: '40px', height: '40px' }} />
       </TitleText>
-      <MyTable header={DATA_HEADER} body={topDatas.slice(0, 5)} />
+      <MyTable header={DATA_HEADER} body={topDatas.slice(0, lg ? 5 : 3)} />
     </Stack>
   )
 }
