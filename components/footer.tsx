@@ -11,7 +11,7 @@ const Footer = (): ReactElement => {
       sx={{
         position: 'absolute',
         left: '0',
-        marginTop: '100px',
+        marginTop: '200px',
         width: '100vw',
         height: '200px',
         paddingY: '40px',
