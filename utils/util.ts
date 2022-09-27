@@ -1,4 +1,4 @@
-import { K } from '../constants/constants'
+import { K, RANK } from '../constants/constants'
 import { getRateFromName } from '../repositories/userRepo'
 
 export const calc_rate = async (
@@ -14,4 +14,10 @@ export const calc_rate = async (
   const new_b: number = b_rate - width * result
   const new_w: number = w_rate + width * result
   return [new_b, new_w]
+}
+
+export const rate_to_rank = (rate: number): string => {
+  const idx = Math.floor((rate - 1000) / 50)
+  const rank = RANK[idx]
+  return rank
 }

@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import { createTheme, ThemeProvider } from '@mui/material'
 import type { AppProps } from 'next/app'
 import Seo from '../components/seo'
+import Layout from '../components/layout'
 
 const theme = createTheme({
   breakpoints: {
@@ -19,7 +20,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
       <Seo />
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </ThemeProvider>
   )
 }
