@@ -25,7 +25,7 @@ const Header = (): ReactElement => {
       alignItems='center'
     >
       <Stack direction='row' alignItems='center' spacing='20px'>
-        <Image src='/assets/logo.png' layout='fixed' width={70} height={70} alt='icon' />
+        <Image src='/assets/logo.png' layout='fixed' width={lg ? 70 : 50} height={lg ? 70 : 50} alt='icon' />
         {lg ? (
           <Typography variant='h4' sx={{ fontFamily: 'serif' }}>
             北大囲碁部レーティング
