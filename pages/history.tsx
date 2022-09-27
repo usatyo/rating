@@ -16,7 +16,9 @@ const History: NextPage = () => {
       <TitleText text='対局履歴'>
         <HistoryOutlinedIcon sx={{ width: '40px', height: '40px' }} />
       </TitleText>
-      <InputField label='名前で検索' value={prefix} name='' handle={handleChange} />
+      <Stack sx={{ maxWidth: '800px', width: '100%' }}>
+        <InputField label='名前で検索' value={prefix} name='' handle={handleChange} />
+      </Stack>
       <MyTable header={DATA_HEADER} body={infos} />
       <ReturnButton />
     </Stack>
